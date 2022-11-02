@@ -14,12 +14,13 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Dashboard |Pustaka';
         $data['sidebar'] = 'Pustaka Booking';
+        $data['topbar'] = 'Admin';
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         // $data['anggota'] = $this->ModelUser->getUserLimit()->result_array();
         // $data['buku'] = $this->ModelBuku->getBuku()->result_array();
         $this->load->view('templates/header', $data);
         $this->load->view('admin/sidebar', $data);
-        $this->load->view('templates/topbar');
+        $this->load->view('admin/topbar', $data);
         $this->load->view('admin/index', $data);
         $this->load->view('templates/footer');
     }
@@ -31,7 +32,8 @@ class Admin extends CI_Controller
             'required' => 'Nama belum diisi!!!'
         ]);
         $this->form_validation->set_rules('nis', 'NIS', 'required|is_unique[anggota.nis]', [
-            'required' => 'NIS belum diisi!!!'
+            'required' => 'NIS belum diisi!!!',
+            'is_unique' => 'NIS sudah terdaftar!!!'
         ]);
         $this->form_validation->set_rules('kelas', 'Kelas', 'required', [
             'required' => 'Kelas belum diisi!!!'
@@ -46,9 +48,10 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Input Anggota |Pustaka';
             $data['sidebar'] = 'Pustaka Booking';
+            $data['topbar'] = 'Admin';
             $this->load->view('templates/header', $data);
             $this->load->view('admin/sidebar', $data);
-            $this->load->view('templates/topbar');
+            $this->load->view('admin/topbar', $data);
             $this->load->view('admin/inputAnggota');
             $this->load->view('templates/footer');
         } else {
@@ -66,8 +69,9 @@ class Admin extends CI_Controller
 
             $this->session->set_flashdata(
                 'pesan',
-                '<div class="alert alert-success alert-message" role="alert">
-                    Anggota berhasil ditambahkan!
+                '<div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Success!</strong> Data telah ditambahkan!
                 </div>'
             );
             redirect('admin/dataAnggota');
@@ -79,10 +83,38 @@ class Admin extends CI_Controller
         $data['anggota'] = $this->ModelAnggota->tampilAnggota();
         $data['title'] = 'Data Anggota |Pustaka';
         $data['sidebar'] = 'Pustaka Booking';
+        $data['topbar'] = 'Admin';
         $this->load->view('templates/header', $data);
         $this->load->view('admin/sidebar', $data);
-        $this->load->view('templates/topbar');
+        $this->load->view('admin/topbar', $data);
         $this->load->view('admin/dataAnggota', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function searchAnggota()
+    {
+        $keyword = $this->input->post('keyword');
+        $data['anggota'] = $this->ModelAnggota->get_keyword($keyword);
+        $data['title'] = 'Data Anggota |Pustaka';
+        $data['sidebar'] = 'Pustaka Booking';
+        $data['topbar'] = 'Admin';
+        $this->load->view('templates/header', $data);
+        $this->load->view('admin/sidebar', $data);
+        $this->load->view('admin/topbar', $data);
+        $this->load->view('admin/dataAnggota', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function dataUser()
+    {
+        $data['user'] = $this->ModelUser->tampilUser();
+        $data['title'] = 'Data User - Pustaka';
+        $data['sidebar'] = 'Pustaka Booking';
+        $data['topbar'] = 'Admin';
+        $this->load->view('templates/header', $data);
+        $this->load->view('admin/sidebar', $data);
+        $this->load->view('admin/topbar', $data);
+        $this->load->view('admin/dataUser', $data);
         $this->load->view('templates/footer');
     }
 }

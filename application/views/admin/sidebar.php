@@ -3,7 +3,7 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>">
-        <div class="sidebar-brand-icon rotate-n-15">
+        <div class="sidebar-brand-icon">
             <i class="fas fa-solid fa-book"></i>
         </div>
         <div class="sidebar-brand-text mx-3"><?= $sidebar; ?></div>
@@ -23,7 +23,21 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    <div class="sidebar-heading text-light">
+        User
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/dataUser'); ?>">
+            <i class="fas fa-fw fa-solid fa-user"></i>
+            <span>Data User</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading text-light">
         Anggota
     </div>
 

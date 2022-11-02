@@ -1,62 +1,57 @@
 <div class="container-fluid">
-    <?= $this->session->flashdata('pesan'); ?>
     <div class="card shadow mx-auto mt-3">
         <h3 class="card-header text-primary text-center mb-2 ">
-            Data Anggota
+            Data User
         </h3>
         <div class="card-body">
             <div class="table-responsive">
                 <div class="row p-2">
-                    <div class="col-lg-4 ml-auto">
+                    <div class="col-lg-8">
 
-                        <?= form_open('admin/searchAnggota');  ?>
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="searchAnggota" placeholder="Cari keyword...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-outline-primary " type="submit">Cari</button>
-                            </span>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-inline">
+                            <?= form_open('admin/searchUser');  ?>
+                            <input type="text" name="keyword" class="form-control" placeholder="Search">
+                            <input type="submit" class="btn btn-primary" name="submit" value="Search"></input>
+                            <?= form_close();  ?>
                         </div>
-                        <?= form_close();  ?>
-
                     </div>
                 </div>
 
                 <table class="table table-bordered">
                     <thead class="text-center">
                         <th>No.</th>
-                        <th>NIS</th>
+                        <th>ID.</th>
                         <th>Nama</th>
-                        <th>Kelas</th>
-                        <th>Tanggal Lahir</th>
-                        <th>Alamat</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Agama</th>
+                        <th>Email</th>
+                        <th>Image</th>
+                        <th>Active</th>
+                        <th>Tanggal Input</th>
                         <th colspan="2">Pilihan</th>
                     </thead>
                     <tfoot class="text-center">
                         <th>No.</th>
-                        <th>NIS</th>
+                        <th>ID.</th>
                         <th>Nama</th>
-                        <th>Kelas</th>
-                        <th>Tanggal Lahir</th>
-                        <th>Alamat</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Agama</th>
+                        <th>Email</th>
+                        <th>Image</th>
+                        <th>Active</th>
+                        <th>Tanggal Input</th>
                         <th colspan="2">Pilihan</th>
                     </tfoot>
                     <tbody>
                         <?php
                         $i = 1;
-                        foreach ($anggota as $a) : ?>
+                        foreach ($user as $u) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $a['nis']; ?></td>
-                                <td><?= $a['nama']; ?></td>
-                                <td><?= $a['kelas']; ?></td>
-                                <td><?= $a['tgl_lahir']; ?></td>
-                                <td><?= $a['alamat']; ?></td>
-                                <td><?= $a['jenis_kelamin']; ?></td>
-                                <td><?= $a['agama']; ?></td>
+                                <td><?= $u['id']; ?></td>
+                                <td><?= $u['nama']; ?></td>
+                                <td><?= $u['email']; ?></td>
+                                <td><?= $u['image']; ?></td>
+                                <td><?= $u['is_active']; ?></td>
+                                <td><?= date('d F Y', $u['tanggal_input']); ?></td>
                                 <td>
                                     <button class="btn btn-sm btn-success p-2 mx-auto" type="button" href="#" data-toggle="modal" data-target="#editModal"><i class="fa-solid fa-pen-to-square"></i></button>
                                 </td>
