@@ -25,13 +25,14 @@ class Admin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function inputAnggota()
+    //SISWA
+    public function inputSiswa()
     {
 
         $this->form_validation->set_rules('nama', 'Nama Siswa', 'required', [
             'required' => 'Nama belum diisi!!!'
         ]);
-        $this->form_validation->set_rules('nis', 'NIS', 'required|is_unique[anggota.nis]', [
+        $this->form_validation->set_rules('nis', 'NIS', 'required|is_unique[siswa.nis]', [
             'required' => 'NIS belum diisi!!!',
             'is_unique' => 'NIS sudah terdaftar!!!'
         ]);
@@ -46,13 +47,13 @@ class Admin extends CI_Controller
         ]);
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Input Anggota |Pustaka';
+            $data['title'] = 'Input Siswa |Pustaka';
             $data['sidebar'] = 'Pustaka Booking';
             $data['topbar'] = 'Admin';
             $this->load->view('templates/header', $data);
             $this->load->view('admin/sidebar', $data);
             $this->load->view('admin/topbar', $data);
-            $this->load->view('admin/inputAnggota');
+            $this->load->view('admin/inputSiswa');
             $this->load->view('templates/footer');
         } else {
             $data = [
@@ -65,7 +66,7 @@ class Admin extends CI_Controller
                 'agama' => $this->input->post('agama', true)
             ];
 
-            $this->ModelAnggota->tambahAnggota($data);
+            $this->ModelSiswa->tambahSiswa($data);
 
             $this->session->set_flashdata(
                 'pesan',
@@ -74,40 +75,29 @@ class Admin extends CI_Controller
                     <strong>Success!</strong> Data telah ditambahkan!
                 </div>'
             );
-            redirect('admin/dataAnggota');
+            redirect('admin/dataSiswa');
         }
     }
 
-    public function dataAnggota()
+    public function dataSiswa()
     {
-        $data['anggota'] = $this->ModelAnggota->tampilAnggota();
-        $data['title'] = 'Data Anggota |Pustaka';
+        $data['siswa'] = $this->ModelSiswa->tampilSiswa();
+        $data['jmlSiswa'] = $this->ModelSiswa->jmlSiswa();
+        $data['title'] = 'Data Siswa |Pustaka';
         $data['sidebar'] = 'Pustaka Booking';
         $data['topbar'] = 'Admin';
         $this->load->view('templates/header', $data);
         $this->load->view('admin/sidebar', $data);
         $this->load->view('admin/topbar', $data);
-        $this->load->view('admin/dataAnggota', $data);
+        $this->load->view('admin/dataSiswa', $data);
         $this->load->view('templates/footer');
     }
 
-    public function searchAnggota()
-    {
-        $keyword = $this->input->post('keyword');
-        $data['anggota'] = $this->ModelAnggota->get_keyword($keyword);
-        $data['title'] = 'Data Anggota |Pustaka';
-        $data['sidebar'] = 'Pustaka Booking';
-        $data['topbar'] = 'Admin';
-        $this->load->view('templates/header', $data);
-        $this->load->view('admin/sidebar', $data);
-        $this->load->view('admin/topbar', $data);
-        $this->load->view('admin/dataAnggota', $data);
-        $this->load->view('templates/footer');
-    }
-
+    //USER
     public function dataUser()
     {
         $data['user'] = $this->ModelUser->tampilUser();
+        $data['jmlUser'] = $this->ModelUser->jmlUser();
         $data['title'] = 'Data User - Pustaka';
         $data['sidebar'] = 'Pustaka Booking';
         $data['topbar'] = 'Admin';
@@ -115,6 +105,21 @@ class Admin extends CI_Controller
         $this->load->view('admin/sidebar', $data);
         $this->load->view('admin/topbar', $data);
         $this->load->view('admin/dataUser', $data);
+        $this->load->view('templates/footer');
+    }
+
+    //BUKU
+    public function dataBuku()
+    {
+        $data['buku'] = $this->ModelBuku->tampilBuku();
+        $data['jmlBuku'] = $this->ModelBuku->jmlBuku();
+        $data['title'] = 'Data Buku - Pustaka';
+        $data['sidebar'] = 'Pustaka Booking';
+        $data['topbar'] = 'Admin';
+        $this->load->view('templates/header', $data);
+        $this->load->view('admin/sidebar', $data);
+        $this->load->view('admin/topbar', $data);
+        $this->load->view('admin/dataBuku', $data);
         $this->load->view('templates/footer');
     }
 }

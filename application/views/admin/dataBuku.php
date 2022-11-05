@@ -1,62 +1,61 @@
 <div class="container-fluid">
-    <?= $this->session->flashdata('pesan'); ?>
     <div class="card shadow mx-auto mt-3">
         <h3 class="card-header text-primary text-center mb-2 ">
-            Data Anggota
+            Data Buku
         </h3>
         <div class="card-body">
             <div class="table-responsive">
                 <div class="row p-2">
+                    <div class="col">
+                        <h5 class="font-weight-bolder text-primary">
+                            <?= "Result : " . $jmlBuku; ?>
+                        </h5>
+                    </div>
                     <div class="col-lg-4 ml-auto">
-
-                        <?= form_open('admin/searchAnggota');  ?>
+                        <?= form_open('admin/searchBuku');  ?>
                         <div class="input-group">
-                            <input type="text" class="form-control" name="searchAnggota" placeholder="Cari keyword...">
+                            <input type="text" class="form-control" name="searchBuku" placeholder="Cari keyword...">
                             <span class="input-group-btn">
                                 <button class="btn btn-outline-primary " type="submit">Cari</button>
                             </span>
                         </div>
                         <?= form_close();  ?>
-
                     </div>
                 </div>
 
                 <table class="table table-bordered">
                     <thead class="text-center">
-                        <th>No.</th>
-                        <th>NIS</th>
-                        <th>Nama</th>
-                        <th>Kelas</th>
-                        <th>Tanggal Lahir</th>
-                        <th>Alamat</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Agama</th>
+                        <th>No</th>
+                        <th>ID</th>
+                        <th>Judul Buku</th>
+                        <th>Pengarang</th>
+                        <th>Penerbit</th>
+                        <th>Tahun Terbit</th>
+                        <th>ISBN</th>
                         <th colspan="2">Pilihan</th>
                     </thead>
                     <tfoot class="text-center">
-                        <th>No.</th>
-                        <th>NIS</th>
-                        <th>Nama</th>
-                        <th>Kelas</th>
-                        <th>Tanggal Lahir</th>
-                        <th>Alamat</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Agama</th>
+                        <th>No</th>
+                        <th>ID</th>
+                        <th>Judul Buku</th>
+                        <th>Pengarang</th>
+                        <th>Penerbit</th>
+                        <th>Tahun Terbit</th>
+                        <th>ISBN</th>
                         <th colspan="2">Pilihan</th>
                     </tfoot>
                     <tbody>
                         <?php
                         $i = 1;
-                        foreach ($anggota as $a) : ?>
+                        foreach ($buku as $b) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $a['nis']; ?></td>
-                                <td><?= $a['nama']; ?></td>
-                                <td><?= $a['kelas']; ?></td>
-                                <td><?= $a['tgl_lahir']; ?></td>
-                                <td><?= $a['alamat']; ?></td>
-                                <td><?= $a['jenis_kelamin']; ?></td>
-                                <td><?= $a['agama']; ?></td>
+                                <td><?= $b['id']; ?></td>
+                                <td><?= $b['judul_buku']; ?></td>
+                                <td><?= $b['pengarang']; ?></td>
+                                <td><?= $b['penerbit']; ?></td>
+                                <td><?= $b['tahun_terbit']; ?></td>
+                                <td><?= $b['isbn']; ?></td>
                                 <td>
                                     <button class="btn btn-sm btn-success p-2 mx-auto" type="button" href="#" data-toggle="modal" data-target="#editModal"><i class="fa-solid fa-pen-to-square"></i></button>
                                 </td>

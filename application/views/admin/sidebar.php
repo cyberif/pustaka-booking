@@ -38,18 +38,42 @@
 
     <!-- Heading -->
     <div class="sidebar-heading text-light">
-        Anggota
+        Siswa
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/inputAnggota'); ?>">
+        <a class="nav-link" href="<?= base_url('admin/inputSiswa'); ?>">
             <i class="fas fa-fw fa-solid fa-pencil"></i>
-            <span>Input Anggota</span></a>
+            <span>Input Siswa</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/dataAnggota'); ?>">
+        <a class="nav-link" href="<?= base_url('admin/dataSiswa'); ?>">
             <i class="fas fa-fw fa-solid fa-table"></i>
-            <span>Data Anggota</span></a>
+            <span>Data Siswa</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading text-light">
+        Buku
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/inputBuku'); ?>">
+            <i class="fas fa-fw fa-solid fa-pencil"></i>
+            <span>Input Buku</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/dataBuku'); ?>">
+            <i class="fas fa-fw fa-solid fa-table"></i>
+            <span>Data Buku</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/kategoriBuku'); ?>">
+            <i class="fas fa-fw fa-solid fa-book"></i>
+            <span>Kategori Buku</span></a>
     </li>
 
     <!-- Divider -->

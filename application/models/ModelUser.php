@@ -20,4 +20,14 @@ class ModelUser extends CI_Model
     {
         return $this->db->get('user')->result_array();
     }
+
+    public function jmlUser()
+    {
+        $query = $this->db->get('user');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
 }
