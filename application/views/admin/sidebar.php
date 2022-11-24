@@ -61,17 +61,17 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/inputBuku'); ?>">
+        <a class="nav-link" href="<?= base_url('buku/inputBuku'); ?>">
             <i class="fas fa-fw fa-solid fa-pencil"></i>
             <span>Input Buku</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/dataBuku'); ?>">
+        <a class="nav-link" href="<?= base_url('buku'); ?>">
             <i class="fas fa-fw fa-solid fa-table"></i>
             <span>Data Buku</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('admin/kategoriBuku'); ?>">
+        <a class="nav-link" href="<?= base_url('buku/kategori'); ?>">
             <i class="fas fa-fw fa-solid fa-book"></i>
             <span>Kategori Buku</span></a>
     </li>

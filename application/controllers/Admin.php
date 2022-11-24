@@ -28,7 +28,6 @@ class Admin extends CI_Controller
     //SISWA
     public function inputSiswa()
     {
-
         $this->form_validation->set_rules('nama', 'Nama Siswa', 'required', [
             'required' => 'Nama belum diisi!!!'
         ]);
@@ -105,21 +104,6 @@ class Admin extends CI_Controller
         $this->load->view('admin/sidebar', $data);
         $this->load->view('admin/topbar', $data);
         $this->load->view('admin/dataUser', $data);
-        $this->load->view('templates/footer');
-    }
-
-    //BUKU
-    public function dataBuku()
-    {
-        $data['buku'] = $this->ModelBuku->tampilBuku();
-        $data['jmlBuku'] = $this->ModelBuku->jmlBuku();
-        $data['title'] = 'Data Buku - Pustaka';
-        $data['sidebar'] = 'Pustaka Booking';
-        $data['topbar'] = 'Admin';
-        $this->load->view('templates/header', $data);
-        $this->load->view('admin/sidebar', $data);
-        $this->load->view('admin/topbar', $data);
-        $this->load->view('admin/dataBuku', $data);
         $this->load->view('templates/footer');
     }
 }
