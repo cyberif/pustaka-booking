@@ -26,22 +26,24 @@
                 <table class="table table-bordered">
                     <thead class="text-center">
                         <th>No</th>
-                        <th>ID</th>
                         <th>Judul Buku</th>
+                        <th>Kategori Buku</th>
                         <th>Pengarang</th>
                         <th>Penerbit</th>
                         <th>Tahun Terbit</th>
                         <th>ISBN</th>
+                        <th>Gambar</th>
                         <th colspan="2">Pilihan</th>
                     </thead>
                     <tfoot class="text-center">
                         <th>No</th>
-                        <th>ID</th>
                         <th>Judul Buku</th>
+                        <th>Kategori Buku</th>
                         <th>Pengarang</th>
                         <th>Penerbit</th>
                         <th>Tahun Terbit</th>
                         <th>ISBN</th>
+                        <th>Gambar</th>
                         <th colspan="2">Pilihan</th>
                     </tfoot>
                     <tbody>
@@ -50,12 +52,15 @@
                         foreach ($buku as $b) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $b['id']; ?></td>
                                 <td><?= $b['judul_buku']; ?></td>
+                                <td><?= $b['id_kategori']; ?></td>
                                 <td><?= $b['pengarang']; ?></td>
                                 <td><?= $b['penerbit']; ?></td>
                                 <td><?= $b['tahun_terbit']; ?></td>
                                 <td><?= $b['isbn']; ?></td>
+                                <td>
+                                    <img src="<?= base_url('assets/img/upload/' .  $b['image']); ?>" alt="<?= $b['image']; ?>" srcset="" width="100">
+                                </td>
                                 <td>
                                     <button class="btn btn-sm btn-success p-2 mx-auto" type="button" href="#" data-toggle="modal" data-target="#editModal"><i class="fa-solid fa-pen-to-square"></i></button>
                                 </td>

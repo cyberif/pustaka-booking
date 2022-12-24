@@ -28,21 +28,28 @@ class Buku extends CI_Controller
     public function inputBuku()
     {
         // INI BELUM
-        $this->form_validation->set_rules('nama', 'Nama Siswa', 'required', [
-            'required' => 'Nama belum diisi!!!'
+        $this->form_validation->set_rules('judul_buku', 'Judul Buku', 'required', [
+            'required' => 'Isi judul buku!'
         ]);
-        $this->form_validation->set_rules('nis', 'NIS', 'required|is_unique[siswa.nis]', [
-            'required' => 'NIS belum diisi!!!',
-            'is_unique' => 'NIS sudah terdaftar!!!'
+        $this->form_validation->set_rules('pengarang', 'Pengarang', 'required', [
+            'required' => 'Isi pengarang!'
         ]);
-        $this->form_validation->set_rules('kelas', 'Kelas', 'required', [
-            'required' => 'Kelas belum diisi!!!'
+        $this->form_validation->set_rules('penerbit', 'Penerbit', 'required', [
+            'required' => 'Isi pengarang!'
         ]);
-        $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required', [
-            'required' => 'Tanggal lahir belum diisi!!!'
+        $this->form_validation->set_rules('tahun_terbit', 'Tahun Terbit', 'required', [
+            'required' => 'Isi pengarang!'
         ]);
-        $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
-            'required' => 'Alamat belum diisi!!!'
+
+        $this->form_validation->set_rules('isbn', 'ISBN', 'required|is_unique[buku.isbn]', [
+            'required' => 'Isi ISBN!',
+            'is_unique' => 'ISBN sudah ada!'
+        ]);
+        $this->form_validation->set_rules('stok', 'Stok', 'required', [
+            'required' => 'Isi stok!'
+        ]);
+        $this->form_validation->set_rules('image', 'Image', 'required', [
+            'required' => 'Isi Image!'
         ]);
 
         if ($this->form_validation->run() == false) {
@@ -66,7 +73,7 @@ class Buku extends CI_Controller
                 'agama' => $this->input->post('agama', true)
             ];
 
-            $this->ModelSiswa->tambahSiswa($data);
+            $this->ModelBuku->tambahBuku($data);
 
             $this->session->set_flashdata(
                 'pesan',
@@ -75,7 +82,7 @@ class Buku extends CI_Controller
                     <strong>Success!</strong> Data telah ditambahkan!
                 </div>'
             );
-            redirect('admin/dataSiswa');
+            redirect('admin/dataBuku');
         }
     }
 

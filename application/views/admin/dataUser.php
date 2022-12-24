@@ -25,7 +25,6 @@
                 <table class="table table-bordered">
                     <thead class="text-center">
                         <th>No.</th>
-                        <th>ID.</th>
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Image</th>
@@ -35,7 +34,6 @@
                     </thead>
                     <tfoot class="text-center">
                         <th>No.</th>
-                        <th>ID.</th>
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Image</th>
@@ -49,7 +47,6 @@
                         foreach ($user as $u) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $u['id']; ?></td>
                                 <td><?= $u['nama']; ?></td>
                                 <td><?= $u['email']; ?></td>
                                 <td><?= $u['image']; ?></td>
